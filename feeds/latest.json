@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "updated_at": "2026-03-05T00:00:00Z",
+  "topics": ["web3", "stablecoin", "card", "crossborder", "risk", "compliance"],
+  "items": [
+    {
+      "id": "RI-20260305-0001",
+      "type": "tactic",
+      "risk_label": "chargeback",
+      "risk_level": "medium",
+      "summary": "Example item: common chargeback risk signals for cross-border card acquiring.",
+      "evidence": ["https://example.com"],
+      "tags": ["cards", "chargeback", "monitoring"],
+      "source": "seed"
+    }
+  ]
+}
