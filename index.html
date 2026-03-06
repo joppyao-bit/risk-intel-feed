@@ -181,7 +181,27 @@
         <span data-i18n="footer">Agent-first publishing pipeline.</span>
       </div>
     </div>
-  </footer>
+  
+    <section class="card mt-6">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <div class="text-sm font-semibold" data-i18n="communityTitle">Community</div>
+          <div class="text-xs muted mt-1" data-i18n="communityDesc">Share leads, suspicious addresses, policy changes, and incident notes.</div>
+        </div>
+        <div class="flex gap-2">
+          <a class="btn ghost" href="https://github.com/joppyao-bit/risk-intel-feed/issues/new/choose" target="_blank" rel="noopener"><span data-i18n="ctaSubmitTip">Submit a tip</span></a>
+          <a class="btn ghost" href="https://github.com/joppyao-bit/risk-intel-feed/issues" target="_blank" rel="noopener"><span data-i18n="ctaBrowseIssues">Browse tips</span></a>
+        </div>
+      </div>
+      <div class="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <span class="pill">fraud</span>
+        <span class="pill">aml</span>
+        <span class="pill">regulatory</span>
+        <span class="pill">ops</span>
+      </div>
+    </section>
+
+</footer>
 
   <script>
     const I18N = {
@@ -190,6 +210,10 @@
         heroTitle: "Web3 · Cards · Cross-border Risk Intelligence",
         heroDesc: "Daily digests for practitioners: signals, controls, and verifiable links.",
         cta: "Open Latest Digest",
+          communityTitle: "Community",
+          communityDesc: "Share leads, suspicious addresses, policy changes, and incident notes.",
+          ctaSubmitTip: "Submit a tip",
+          ctaBrowseIssues: "Browse tips",
         heroBadgeTitle: "Operational view",
         heroBadgeDesc: "Signals → Controls → Evidence",
         statusLabel: "Status",
@@ -216,6 +240,10 @@
         heroTitle: "Web3 · 外卡 · 跨境支付风控情报",
         heroDesc: "Daily digests for practitioners: signals, controls, and verifiable links.",
         cta: "查看最新摘要",
+          communityTitle: "交流",
+          communityDesc: "提交线索、可疑地址、政策变化与事件记录。",
+          ctaSubmitTip: "提交线索",
+          ctaBrowseIssues: "浏览线索",
         heroBadgeTitle: "作业视角",
         heroBadgeDesc: "Signals → Controls → Evidence",
         statusLabel: "状态",
