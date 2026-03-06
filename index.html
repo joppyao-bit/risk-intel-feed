@@ -207,8 +207,9 @@
         next3: "Community threads for practitioners",
         disclaimerTitle: "Disclaimer",
         disclaimerDesc: "Outputs are automatically generated. Treat as leads. Verify sources before action.",
-        footer: "Agent-first publishing pipeline."
-      },
+        footer: "Agent-first publishing pipeline.",
+        ctaSubmitTip: "Submit a tip",
+        ctaBrowseIssues: "Browse tips"      },
       zh: {
         subtitle: "Agent Feed · 机器优先，人类可读",
         heroTitle: "Web3 · 外卡 · 跨境支付风控情报",
@@ -232,9 +233,11 @@
         next3: "Community threads for practitioners",
         disclaimerTitle: "免责声明",
         disclaimerDesc: "内容由来源自动生成，仅作线索；采取动作前务必核验来源。",
-        footer: "Agent-first 发布流水线。"
-      }
-    };
+        footer: "Agent-first 发布流水线。",
+        ctaSubmitTip: "提交线索",
+        ctaBrowseIssues: "浏览线索"      },
+        ctaSubmitTip: "Submit a tip",
+        ctaBrowseIssues: "Browse tips"    };
 
     const state = { lang: "en", data: null };
 
@@ -242,8 +245,9 @@
       document.documentElement.lang = state.lang === "zh" ? "zh-CN" : "en";
       for (const el of document.querySelectorAll("[data-i18n]")) {
         const key = el.getAttribute("data-i18n");
-        el.textContent = (I18N[state.lang] && I18N[state.lang][key]) ? I18N[state.lang][key] : el.textContent;
-      }
+        el.textContent = (I18N[state.lang] && I18N[state.lang][key]) ? I18N[state.lang][key] : el.textContent;,
+        ctaSubmitTip: "提交线索",
+        ctaBrowseIssues: "浏览线索"      }
     }
 
     function badgeForRisk(level) {
