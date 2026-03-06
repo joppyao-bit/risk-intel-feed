@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+JOB_ID="${1:-}"
+[[ -z "$JOB_ID" ]] && { echo "Usage: $0 <cron_job_id>"; exit 2; }
+
+REPO="$HOME/.openclaw/workspace/agent-site"
+cd "$REPO"
+
+# 1) pull latest run JSON
+runs_json="$(openclaw cron runs --id "$JOB_ID" --limit 1 --expect-final --timeout 180000 --json 2>&1)"
+
+# 2) extract summary as real multi-line text (json unescape)
+summary="$(python3 - <<'PY'
+import json,sys
+s=sys.stdin.read()
+try:
+  d=json.loads(s)
+except Exception as e:
+  print("", end="")
+  sys.exit(0)
+entries=d.get("entries") or []
+if not entries:
+  print("", end="")
+  sys.exit(0)
+print(entries[0].get("summary",""), end="")
+PY
+<<<"$runs_json")"
+
+if [[ -z "${summary// }" ]]; then
+  echo "$runs_json" > scripts/last_runs_pull.log
+  echo "No summary found. Saved raw runs JSON to scripts/last_runs_pull.log"
+  exit 1
+fi
+
+# 3) extract blocks from summary (now real lines)
+md="$(printf "%s\n" "$summary" | awk 'f{print} /@@SITE_MD_BEGIN/{f=1;next} /@@SITE_MD_END/{f=0}')"
+js="$(printf "%s\n" "$summary" | awk 'f{print} /@@SITE_JSON_BEGIN/{f=1;next} /@@SITE_JSON_END/{f=0}')"
+
+if [[ -z "${md// }" || -z "${js// }" ]]; then
+  echo "$summary" > scripts/last_summary.txt
+  echo "$runs_json" > scripts/last_runs_pull.log
+  echo "No @@SITE blocks found in summary. Saved to scripts/last_summary.txt and scripts/last_runs_pull.log"
+  exit 1
+fi
+
+# 4) date from json block
+date_str="$(echo "$js" | grep -Eo '"date"\s*:\s*"[^"]+"' | head -n1 | sed -E 's/.*"date"\s*:\s*"([^"]+)".*/\1/')"
+[[ -z "$date_str" ]] && date_str="$(date +%F)"
+
+mkdir -p feeds digests
+
+echo "$md" > "digests/${date_str}.md"
+echo "$md" > "feeds/latest.md"
+echo "$js" > "feeds/latest.json"
+
+git add "digests/${date_str}.md" "feeds/latest.md" "feeds/latest.json" scripts/last_summary.txt scripts/last_runs_pull.log 2>/dev/null || true
+if git diff --cached --quiet; then
+  echo "No changes to commit."
+  exit 0
+fi
+
+git commit -m "publish digest ${date_str}"
+git push
+echo "Published digest ${date_str}"
