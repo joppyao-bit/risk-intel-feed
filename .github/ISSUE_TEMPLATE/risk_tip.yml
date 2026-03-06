@@ -1,0 +1,74 @@
+name: Risk Tip
+description: Submit a risk signal with evidence and context
+title: "[RISK][CHAIN][TYPE] short summary"
+labels: ["new"]
+body:
+  - type: dropdown
+    id: chain
+    attributes:
+      label: Chain
+      options:
+        - Ethereum
+        - Tron
+        - Solana
+        - Bitcoin
+        - BSC
+        - Polygon
+        - Arbitrum
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: risk_type
+    attributes:
+      label: Risk type
+      options:
+        - fraud
+        - aml
+        - sanctions
+        - scam
+        - card_abuse
+        - chargeback
+        - merchant_risk
+        - regulatory
+        - other
+    validations:
+      required: true
+  - type: input
+    id: address_or_tx
+    attributes:
+      label: Address or TxHash
+      placeholder: "0x... / T... / txid..."
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence links
+      placeholder: "One link per line"
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      placeholder: "What happened, why it matters, how it was observed"
+    validations:
+      required: true
+  - type: dropdown
+    id: confidence
+    attributes:
+      label: Confidence
+      options:
+        - high
+        - medium
+        - low
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Optional extra fields
+      placeholder: "amounts, related addresses, tags, screenshots, etc."
+    validations:
+      required: false
