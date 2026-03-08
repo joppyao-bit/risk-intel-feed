@@ -4,3 +4,7 @@ scripts/*.log
 scripts/*.out.log
 scripts/last_runs_pull.*
 scripts/last_summary.*
+.DS_Store
+scripts/last_runs_pull.log
+scripts/publisher.out.log
+scripts/publish_weekly_from_runs.sh
