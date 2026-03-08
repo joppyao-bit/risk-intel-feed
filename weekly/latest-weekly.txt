@@ -1,0 +1,36 @@
+# Web3 Risk Forum - Weekly Index
+## Week of March 2-8, 2026 (7-Day Rolling)
+
+### L1: Security Incidents
+- **Total Events**: 2
+- **Critical**: 0
+- **High**: 1
+- **Medium**: 1
+
+| Date | Project | Type | Loss (USD) | Status |
+|------|---------|------|------------|--------|
+| 2026-03-05 | DeFi Protocol X | Exploit | $2.4M | Investigating |
+| 2026-03-03 | Bridge Y | Hack | $850K | Resolved |
+
+### L2: Regulatory Updates
+- **SEC**: 0
+- **EU MiCA**: 1
+- **APAC**: 0
+
+| Date | Region | Agency | Update |
+|------|--------|--------|--------|
+| 2026-03-04 | EU | ESMA | Stablecoin reserve requirements updated |
+
+### L3: DeFi/Market Risks
+- **TVL Changes**: -2.1%
+- **Gas Avg**: 45 Gwei
+- **Liquidation Events**: $12.8M
+
+| Metric | Value | Change |
+|--------|-------|--------|
+| Total DeFi TVL | $142.3B | -2.1% |
+| ETH Price | $2,840 | -1.8% |
+| Active Addresses | 892K | +5.2% |
+
+---
+*Generated: 2026-03-08 10:58 UTC*

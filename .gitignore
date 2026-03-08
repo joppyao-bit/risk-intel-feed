@@ -1,0 +1,6 @@
+.DS_Store
+backups/
+scripts/*.log
+scripts/*.out.log
+scripts/last_runs_pull.*
+scripts/last_summary.*
